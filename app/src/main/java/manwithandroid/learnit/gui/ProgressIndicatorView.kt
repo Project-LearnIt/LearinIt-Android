@@ -12,16 +12,30 @@ import manwithandroid.learnit.R
 import manwithandroid.learnit.utilities.UiUtilities
 
 class ProgressIndicatorView : LinearLayout {
-    
+
+    private val halfSize = 100 / 2
+
+    private var progress = 0
+    private var factor = 3.0f
+
     constructor(context: Context) : super(context) {
         initView()
     }
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
-        initView()
-    }
+        val a = context.theme.obtainStyledAttributes(
+                attrs,
+                R.styleable.ProgressIndicatorView,
+                0, 0)
 
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+        try {
+            progress = a.getInteger(R.styleable.ProgressIndicatorView_progress, progress)
+            factor = a.getFloat(R.styleable.ProgressIndicatorView_factor, factor)
+        } finally {
+            a.recycle()
+        }
+
+
         initView()
     }
 
@@ -40,31 +54,40 @@ class ProgressIndicatorView : LinearLayout {
         positiveBar.background.setColorFilter(POSITIVE_BAR_COLOR, PorterDuff.Mode.SRC_IN)
         negativeBar.background.setColorFilter(NEGATIVE_BAR_COLOR, PorterDuff.Mode.SRC_IN)
 
-        setPositiveProgress(60)
-        setNumber(2)
+        setProgress(progress)
     }
 
-    fun setNumber(Number: Int) {
-        indicatorCircleTextView.text = String.format("%d", Number)
+    fun setProgress(number: Int) {
+        val newLocation = Math.abs(getLocationFor(number))
+
+        setProgressBarSizes(newLocation, halfSize * 2 - newLocation)
+
+        setNumber(number)
     }
 
-    fun setPositiveProgress(Value: Int) {
-        setProgressBarSizes(Value, 100 - Value)
+    private fun getLocationFor(number: Int) = ((2 * halfSize) / Math.PI) * Math.atan(number.toDouble() / factor) + halfSize
 
+    private fun setNumber(number: Int) {
+        if (number == 0) {
+            checkView.visibility = View.VISIBLE
+            indicatorCircleTextView.visibility = View.GONE
+
+        } else {
+            checkView.visibility = View.GONE
+            indicatorCircleTextView.visibility = View.VISIBLE
+
+            indicatorCircleTextView.text = String.format("%d", number)
+        }
     }
 
-    fun setNegativeProgress(Value: Int) {
-        setProgressBarSizes(100 - Value, Value)
-    }
-
-    private fun setProgressBarSizes(PositiveBar: Int, NegativeBar: Int) {
+    private fun setProgressBarSizes(PositiveBar: Double, NegativeBar: Double) {
         (negativeBar.layoutParams as LinearLayout.LayoutParams).weight = NegativeBar.toFloat()
         (positiveBar.layoutParams as LinearLayout.LayoutParams).weight = PositiveBar.toFloat()
 
         positiveBar.background.setColorFilter(if (PositiveBar >= NegativeBar) POSITIVE_BAR_COLOR else PLACEHOLDER_BAR_COLOR, PorterDuff.Mode.SRC_IN)
         negativeBar.background.setColorFilter(if (NegativeBar > PositiveBar) NEGATIVE_BAR_COLOR else PLACEHOLDER_BAR_COLOR, PorterDuff.Mode.SRC_IN)
 
-        indicatorCircleTextView.background.setColorFilter(if (PositiveBar >= NegativeBar) POSITIVE_COLOR else NEGATIVE_COLOR, PorterDuff.Mode.SRC_IN)
+        indicatorCircleHolder.background.setColorFilter(if (PositiveBar >= NegativeBar) POSITIVE_COLOR else NEGATIVE_COLOR, PorterDuff.Mode.SRC_IN)
     }
 
     companion object {

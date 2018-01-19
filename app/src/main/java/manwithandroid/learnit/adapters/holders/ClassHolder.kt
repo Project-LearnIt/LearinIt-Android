@@ -21,8 +21,7 @@ class ClassHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(classObject: Class) {
         classNameTextView.text = classObject.name
 
-        progressIndicator.setPositiveProgress(50)
-        progressIndicator.setNumber(0)
+        progressIndicator.setProgress(0)
 
         itemView.setOnClickListener {
             //todo open this class

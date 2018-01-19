@@ -17,4 +17,4 @@ https://docs.google.com/document/d/1XDo7kMPiQ-5Xwdjl7yGz8b0meLl0rq5dXhc-lPHBFzs/
 
 ## Thanks!
 
-![enter image description here](https://raw.githubusercontent.com/LearnIt-Datathon-Group/LearinIt-Android/master/big_logo.png)
+![enter image description here](https://raw.githubusercontent.com/Project-LearnIt/LearinIt-Android/master/big_logo.png)

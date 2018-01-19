@@ -1,0 +1,52 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:actionBarDivider">@color/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.Dialog" parent="Theme.AppCompat.Light.Dialog">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="AppThemeLayouts" parent="AppTheme">
+        <item name="android:fontFamily">@font/roboto</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <style name="CardStyle" parent="CardView.Light">
+        <item name="contentPaddingRight">@dimen/card_sides_edge</item>
+        <item name="contentPaddingLeft">@dimen/card_sides_edge</item>
+        <item name="contentPaddingTop">@dimen/screen_sides_edge</item>
+        <item name="contentPaddingBottom">@dimen/screen_sides_edge</item>
+        <item name="cardCornerRadius">0dp</item>
+    </style>
+
+    <style name="CardTitle" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:text">test text</item>
+        <item name="android:textColor">@color/colorBackgroundText</item>
+        <item name="android:textSize">@dimen/title</item>
+        <item name="android:layout_margin">@dimen/screen_sides_edge</item>
+    </style>
+
+</resources>

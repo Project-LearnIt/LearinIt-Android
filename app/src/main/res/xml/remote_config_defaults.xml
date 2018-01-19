@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<defaultsMap>
+    <entry>
+        <key>loading_min_time</key>
+        <value>1500</value>
+    </entry>
+</defaultsMap>

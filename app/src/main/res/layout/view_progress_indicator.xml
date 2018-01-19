@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="3dp">
+
+    <View
+        android:id="@+id/positiveBar"
+        android:layout_width="0dp"
+        android:layout_weight="0.1"
+        android:layout_height="10dp"
+        android:layout_marginEnd="-8dp"
+        android:layout_gravity="center_vertical"
+        android:elevation="-2dp"
+        android:background="@drawable/progress_indicator_bar"/>
+
+    <TextView
+        android:id="@+id/indicatorCircleTextView"
+        android:layout_width="@dimen/medium_sqrt_content_size"
+        android:layout_height="@dimen/medium_sqrt_content_size"
+        android:textColor="@color/colorLightText"
+        android:gravity="center"
+        android:textSize="15dp"
+        android:elevation="1dp"
+        android:background="@drawable/progress_indicator_circle"/>
+
+    <View
+        android:id="@+id/negativeBar"
+        android:layout_width="0dp"
+        android:layout_weight="0.5"
+        android:layout_height="10dp"
+        android:layout_marginStart="-8dp"
+        android:layout_gravity="center_vertical"
+        android:elevation="-2dp"
+        android:background="@drawable/progress_indicator_bar"/>
+
+</LinearLayout>

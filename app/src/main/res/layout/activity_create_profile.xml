@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/birthdayTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/birthday_title"
+        android:textColor="@color/colorCardBackgroundText"
+        android:textSize="@dimen/sub_title"
+        app:layout_constraintStart_toStartOf="@+id/birthdayEditText"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"/>
+
+    <TextView
+        android:id="@+id/favoriteMovieTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/favorite_movie_genre_title"
+        android:textColor="@color/colorCardBackgroundText"
+        android:textSize="@dimen/sub_title"
+        app:layout_constraintStart_toStartOf="@+id/favoriteMovieSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/birthdayEditText"/>
+
+    <EditText
+        android:id="@+id/birthdayEditText"
+        android:layout_width="0dp"
+        android:layout_height="43dp"
+        android:layout_marginEnd="54dp"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="8dp"
+        android:hint="@string/enter_birthday"
+        android:inputType="date"
+        android:focusable="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/birthdayTextView"/>
+
+    <Spinner
+        android:id="@+id/favoriteMovieSpinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:entries="@array/movie_genre_type"
+        app:layout_constraintEnd_toEndOf="@+id/birthdayEditText"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/birthdayEditText"
+        app:layout_constraintTop_toBottomOf="@+id/favoriteMovieTextView"/>
+
+    <TextView
+        android:id="@+id/brothersNumberTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/number_brothers_title"
+        android:textColor="@color/colorCardBackgroundText"
+        android:textSize="@dimen/sub_title"
+        app:layout_constraintStart_toStartOf="@+id/favoriteMovieSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/favoriteMovieSpinner"/>
+
+    <TextView
+        android:id="@+id/brothersNumberTextView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/favorite_lesson_title"
+        android:textColor="@color/colorCardBackgroundText"
+        android:textSize="@dimen/sub_title"
+        app:layout_constraintStart_toStartOf="@+id/brothersNumberSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/genderSwitch"/>
+
+    <TextView
+        android:id="@+id/brothersNumberTextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/male_title"
+        android:textColor="@color/colorCardBackgroundText"
+        android:textSize="@dimen/text"
+        app:layout_constraintBottom_toBottomOf="@+id/genderSwitch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/genderSwitch"
+        app:layout_constraintTop_toTopOf="@+id/genderSwitch"/>
+
+    <TextView
+        android:id="@+id/brothersNumberTextView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/female_title"
+        android:textColor="@color/colorCardBackgroundText"
+        android:textSize="@dimen/text"
+        app:layout_constraintBottom_toBottomOf="@+id/genderSwitch"
+        app:layout_constraintEnd_toStartOf="@+id/genderSwitch"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/genderSwitch"/>
+
+    <Spinner
+        android:id="@+id/brothersNumberSpinner"
+        android:layout_width="0dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="8dp"
+        android:entries="@array/numbers"
+        app:layout_constraintEnd_toEndOf="@+id/favoriteMovieSpinner"
+        app:layout_constraintStart_toStartOf="@+id/brothersNumberTextView"
+        app:layout_constraintTop_toBottomOf="@+id/brothersNumberTextView"/>
+
+    <Button
+        android:id="@+id/continueButton"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:text="@string/continue_title"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <Switch
+        android:id="@+id/genderSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/brothersNumberSpinner"/>
+
+    <Spinner
+        android:id="@+id/favoriteLessonSpinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:entries="@array/lessons"
+        app:layout_constraintEnd_toEndOf="@+id/brothersNumberSpinner"
+        app:layout_constraintStart_toStartOf="@+id/brothersNumberSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/brothersNumberTextView4"/>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/profile_description"
+        android:textColor="@color/colorBackgroundText"
+        android:textSize="@dimen/sub_title"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+</android.support.constraint.ConstraintLayout>

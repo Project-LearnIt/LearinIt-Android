@@ -1,0 +1,195 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'io.fabric'
+apply plugin: 'com.google.firebase.firebase-perf'
+
+static def getDate() {
+    return new Date().format('ddMMyy')
+}
+
+android {
+    compileSdkVersion propCompileSdkVersion.toInteger()
+
+    defaultConfig {
+        applicationId "manwithandroid.learnit"
+
+        //Version Params
+        def properties = new Properties()
+        File propertiesFile = file("version.properties")
+
+        properties.load(propertiesFile.newDataInputStream())
+
+        versionCode properties.getProperty("propVersionCode").toInteger()
+        versionName properties.getProperty("propVersionName")
+
+        //SDK Params
+        minSdkVersion propMinSdkVersion.toInteger()
+        targetSdkVersion propTargetSdkVersion.toInteger()
+
+        //Test configuration
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    flavorDimensions "default"
+
+    productFlavors {
+        app {
+            dimension "default"
+
+            //Version Name
+            versionName = defaultConfig.versionName + '.app'
+        }
+
+        googlePlay {
+            dimension "default"
+
+            //Version Name
+            versionName = defaultConfig.versionName + '.GooglePlay'
+        }
+    }
+
+    signingConfigs {
+        leanItDebugConfig {
+            storeFile file('../keys/debugKey.jks')
+            storePassword 'learnit123'
+            keyAlias 'LearnIt-Team'
+            keyPassword 'learnit123'
+        }
+
+        learnItConfig {
+            /* Load secure props */
+            Properties secureProps = new Properties()
+            secureProps.load(new FileInputStream(propSecureFile))
+
+            storeFile file(secureProps.secureStoreFile)
+            storePassword secureProps.secureStorePassword
+            keyAlias secureProps.secureKeyAlias
+            keyPassword secureProps.secureKeyPassword
+        }
+    }
+
+    buildTypes {
+        debug {
+            versionNameSuffix '-debug'
+
+            signingConfig signingConfigs.leanItDebugConfig
+
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        alpha {
+            versionNameSuffix '-alpha'
+
+            signingConfig signingConfigs.leanItDebugConfig
+
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        beta {
+            versionNameSuffix '-beta'
+
+            signingConfig signingConfigs.leanItDebugConfig
+
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            signingConfig signingConfigs.learnItConfig
+
+            useProguard true
+            shrinkResources true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        gradle.projectsEvaluated {
+            android.applicationVariants.all { variant ->
+                variant.outputs.all { outputs ->
+                    if (outputs.outputFile != null) {
+                        def file = outputs.outputFile
+
+                        if (outputs.outputFile.name.endsWith('.apk')) {
+                            //Add version and date to file name
+                            outputFileName = file.name.replace('.apk',
+                                    '_' +
+                                            android.defaultConfig.versionName +
+                                            "_" +
+                                            getDate() +
+                                            ".apk"
+                            )
+                        } else if (file.name == 'mapping.txt') {
+                            //Add version and date to file name
+                            outputFileName = file.name.replace('mapping',
+                                    'mapping_' +
+                                            android.defaultConfig.versionName +
+                                            "_" +
+                                            getDate()
+                            )
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    ext.autoIncrementBuildNumber = {
+        def properties = new Properties()
+        File propertiesFile = file("version.properties")
+
+        properties.load(propertiesFile.newDataInputStream())
+
+        def newVersionCode = String.format("%03d", properties.getProperty("propVersionCode").toInteger() + 1)
+        def newVersionName = String.format("%c.%c.%c", newVersionCode.toCharArray())
+
+        properties.setProperty("propVersionCode", newVersionCode)
+        properties.setProperty("propVersionName", newVersionName)
+
+        properties.store(propertiesFile.newWriter(), null)
+    }
+
+    gradle.taskGraph.whenReady { taskGraph ->
+        try {
+            if (taskGraph.hasTask(assembleGooglePlayRelease)) {
+                autoIncrementBuildNumber()
+            }
+        } catch (ignored) {
+
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:27.0.2'
+    implementation 'com.android.support:design:27.0.2'
+    implementation 'com.android.support:cardview-v7:27.0.2'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation('com.crashlytics.sdk.android:crashlytics:2.7.1@aar') {
+        transitive = true
+    }
+    implementation 'com.google.firebase:firebase-core:11.8.0'
+    implementation 'com.google.firebase:firebase-auth:11.8.0'
+    implementation 'com.google.firebase:firebase-perf:11.8.0'
+    implementation 'com.google.firebase:firebase-config:11.8.0'
+    implementation 'com.google.firebase:firebase-firestore:11.8.0'
+    implementation 'com.google.firebase:firebase-database:11.8.0'
+    implementation 'com.eyalbira.loadingdots:loading-dots:1.0.2'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.6.3'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+}
+
+apply plugin: 'com.google.gms.google-services'
+repositories {
+    mavenCentral()
+}

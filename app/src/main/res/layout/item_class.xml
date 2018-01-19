@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/frameLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:id="@+id/imageHolder"
+        android:layout_width="@dimen/sqrt_content_big_size"
+        android:layout_height="@dimen/sqrt_content_big_size"
+        android:background="@drawable/circle"
+        android:padding="2dp"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:id="@+id/classImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/classNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="test"
+        android:textColor="@color/colorCardBackgroundText"
+        android:textSize="@dimen/sub_title"
+        android:layout_toEndOf="@+id/imageHolder"
+        android:layout_centerVertical="true"/>
+
+    <manwithandroid.learnit.gui.ProgressIndicatorView
+        android:id="@+id/progressIndicator"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"/>
+
+</RelativeLayout>

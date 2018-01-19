@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="screen_sides_edge">16dp</dimen>
+    <dimen name="section_title_sides_edge">12dp</dimen>
+    <dimen name="card_sides_edge">22dp</dimen>
+    <dimen name="subtitle_height">48dp</dimen>
+    <dimen name="list_item_height">72dp</dimen>
+
+    <dimen name="space_between_content">8dp</dimen>
+
+    <dimen name="sqrt_content_size">40dp</dimen>
+    <dimen name="sqrt_content_big_size">50dp</dimen>
+    <dimen name="sqrt_content_margins">8dp</dimen>
+
+    <dimen name="medium_sqrt_content_size">28dp</dimen>
+
+    <dimen name="small_sqrt_content_size">24dp</dimen>
+    <dimen name="small_sqrt_content_margins">5dp</dimen>
+
+    <dimen name="title">18sp</dimen>
+    <dimen name="sub_title">16sp</dimen>
+    <dimen name="small_title">14sp</dimen>
+    <dimen name="text">14sp</dimen>
+
+    <dimen name="dialog_padding">24dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+
+</resources>

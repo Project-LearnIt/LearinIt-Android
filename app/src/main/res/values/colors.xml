@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#FF1E282C</color>
+    <color name="colorPrimaryDark">#FF182023</color>
+    <color name="colorPrimaryBright">#FF37474F</color>
+    <color name="colorAccent">#FFFFAB40</color>
+    <color name="colorAccentDark">#FFFF9100</color>
+
+    <color name="colorBackGardStart">@color/colorPrimary</color>
+    <color name="colorBackGardEnd">@color/colorPrimaryDark</color>
+
+    <color name="colorGreen">#FF66BB6A</color>
+    <color name="colorRed">#FFEE4844</color>
+    <color name="colorPlaceholder">#FF90A4AE</color>
+
+    <color name="colorBackground">#FFE6E6E6</color>
+    <color name="colorBackgroundText">#FF757575</color>
+    <color name="colorCardBackground">#FFFAFAFA</color>
+    <color name="colorCardBackgroundText">#FF000000</color>
+    <color name="colorLightText">#ffffff</color>
+</resources>

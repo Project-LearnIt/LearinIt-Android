@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <EditText
+        android:id="@+id/nameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/name_title"
+        android:layout_marginEnd="54dp"
+        android:layout_marginStart="54dp"
+        android:inputType="textPersonName"/>
+
+    <EditText
+        android:id="@+id/emailEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/email_title"
+        android:layout_marginEnd="54dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginStart="54dp"
+        android:inputType="textEmailAddress"/>
+
+    <EditText
+        android:id="@+id/passwordEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/password_title"
+        android:layout_marginEnd="54dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginStart="54dp"
+        android:inputType="textPassword"/>
+
+    <EditText
+        android:id="@+id/repasswordEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/repeat_password_title"
+        android:layout_marginEnd="54dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginStart="54dp"
+        android:inputType="textPassword"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="56dp">
+
+        <Button
+            android:id="@+id/signUpButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_up_title"
+            android:layout_gravity="center"
+            style="@style/Base.Widget.AppCompat.Button.Colored"/>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+
+    </FrameLayout>
+
+</LinearLayout>

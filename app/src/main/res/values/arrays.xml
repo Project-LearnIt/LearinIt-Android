@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="user_preference_lessons_week" >
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+
+    <string-array name="user_preference_lessons_time" >
+        <item>@string/short_title</item>
+        <item>@string/medium_title</item>
+        <item>@string/long_title</item>
+    </string-array>
+
+    <string-array name="user_preference_lessons_type" >
+        <item>Texts</item>
+        <item>Videos</item>
+        <item>Sounds</item>
+    </string-array>
+
+    <string-array name="movie_genre_type">
+        <item>Comedy</item>
+        <item>Action</item>
+        <item>Horror</item>
+        <item>Romance</item>
+        <item>Drama</item>
+        <item>Mystery</item>
+        <item>Crime</item>
+        <item>Animations</item>
+        <item>Adventure</item>
+        <item>Fantasy</item>
+    </string-array>
+
+    <string-array name="lessons">
+        <item>Math</item>
+        <item>History</item>
+        <item>English</item>
+        <item>Hebrew</item>
+        <item>Citizenship</item>
+        <item>Literature</item>
+        <item>Sport</item>
+        <item>Geography</item>
+        <item>Biology</item>
+        <item>Chemistry</item>
+        <item>Physics</item>
+        <item>Computers</item>
+        <item>Arabic</item>
+        <item>Music</item>
+        <item>Art</item>
+    </string-array>
+
+    <string-array name="numbers">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+
+</resources>

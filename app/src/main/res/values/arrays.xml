@@ -64,4 +64,38 @@
         <item>6</item>
     </string-array>
 
+    <string-array name="love_rates">
+        <item>Very Love</item>
+        <item>Love</item>
+        <item>Fifty Fifty</item>
+        <item>Don’t Love</item>
+        <item>Hate</item>
+    </string-array>
+
+    <string-array name="lesson_duration">
+        <item>Very Long</item>
+        <item>Long</item>
+        <item>Medium</item>
+        <item>Short</item>
+        <item>Very Short</item>
+    </string-array>
+
+    <string-array name="times_a_week">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+
+    <string-array name="good_rates">
+        <item>Very good</item>
+        <item>Good</item>
+        <item>Fifty Fifty</item>
+        <item>Don’t good</item>
+        <item>Terrible</item>
+    </string-array>
+
 </resources>

@@ -61,7 +61,7 @@ class HomeActivity : AppCompatActivity(), OnNavigationItemSelectedListener {
         super.onResume()
         // Check if need to create profile for this user
         if (UserHelper.getConnectedUser()?.profile == null) {
-            startActivity(CreateProfileActivity.createIntent(this, {
+            startActivity(CreateUserProfileActivity.createIntent(this, {
                 if (it == null) {
                     Toast.makeText(this, R.string.you_must_create_profile, Toast.LENGTH_SHORT).show()
 

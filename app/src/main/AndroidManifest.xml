@@ -21,7 +21,8 @@
         </activity>
 
         <activity android:name=".activity.SignInActivity" android:theme="@style/AppTheme"/>
-        <activity android:name=".activity.CreateProfileActivity" android:theme="@style/AppTheme"/>
+        <activity android:name=".activity.CreateUserProfileActivity" android:theme="@style/AppTheme"/>
+        <activity android:name=".activity.CreateLessonProfileActivity" android:theme="@style/AppTheme"/>
         <activity android:name=".activity.HomeActivity" android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".activity.LessonActivity" android:theme="@style/AppTheme"/>
         <activity android:name=".activity.AddLessonActivity" android:theme="@style/AppTheme"/>

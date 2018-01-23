@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.dilaog_join_class.*
 import manwithandroid.learnit.R
+import manwithandroid.learnit.activity.CreateLessonProfileActivity
 import manwithandroid.learnit.helpers.ClassesHelper
 import manwithandroid.learnit.helpers.UserHelper
 
@@ -43,9 +44,13 @@ class JoinClassDialog(context: Context) : AppCompatDialog(context) {
         ClassesHelper.getClass(classId, {
             setState(false)
             if (it.isSuccessful) {
-                ClassesHelper.registerClass(it.resultObject!!, classId)
+                val classObject = it.resultObject
+                context.startActivity(CreateLessonProfileActivity.createIntent(context, {
+                    if (it == null) Toast.makeText(context, R.string.you_must_create_lesson_profile, Toast.LENGTH_SHORT).show()
+                    else ClassesHelper.registerClass(classObject!!, it, classId)
 
-                cancel()
+                    cancel()
+                }))
             } else {
                 Toast.makeText(context, R.string.class_not_found, Toast.LENGTH_SHORT).show()
             }

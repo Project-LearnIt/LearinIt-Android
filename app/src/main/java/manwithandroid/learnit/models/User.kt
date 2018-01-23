@@ -12,13 +12,16 @@ class User {
 
     var lastLessonsBuildTask: Date? = null
 
-    var profile: Profile? = null
+    var userProfile: UserProfile? = null
 
     var weekLessons: MutableList<Lesson>? = null
 
     var uncompletedLessons: MutableList<Lesson>? = null
 
     var classes: MutableList<Class>? = null
+
+    // Lessons profiles map by class key and lesson profile
+    var lessonsProfiles: MutableMap<String, LessonProfile>? = null
 
     constructor() {
         //do nothing

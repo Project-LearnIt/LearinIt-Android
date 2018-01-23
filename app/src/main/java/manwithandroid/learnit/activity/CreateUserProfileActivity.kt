@@ -10,7 +10,7 @@ import android.widget.DatePicker
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_create_user_profile.*
 import manwithandroid.learnit.R
-import manwithandroid.learnit.models.Profile
+import manwithandroid.learnit.models.UserProfile
 import manwithandroid.learnit.utilities.TimeUtilities
 import java.util.*
 
@@ -28,6 +28,8 @@ class CreateUserProfileActivity : AppCompatActivity(), OnDateSetListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_user_profile)
 
+        supportActionBar?.title = resources.getString(R.string.create_user_profile_title)
+
         birthdayEditText.setOnClickListener({
             DatePickerDialog(
                     this,
@@ -39,22 +41,22 @@ class CreateUserProfileActivity : AppCompatActivity(), OnDateSetListener {
         })
 
         continueButton.setOnClickListener {
-            val profile = createProfile()
+            val profile = createUserProfile()
 
             if (profile != null) {
                 valueReturned = true
-                createProfileListener(profile)
+                createUserProfileListener(profile)
 
                 finish()
             }
         }
     }
 
-    private fun createProfile(): Profile? {
+    private fun createUserProfile(): UserProfile? {
         val birthday = birthdayEditText.text.toString()
         val favoriteMovieGenre = favoriteMovieSpinner.selectedItemPosition
         val numberOfBrothers = brothersNumberSpinner.selectedItemPosition
-        val gender = if (genderSwitch.isChecked) Profile.GENDER_MALE else Profile.GENDER_FEMALE
+        val gender = if (genderSwitch.isChecked) UserProfile.GENDER_MALE else UserProfile.GENDER_FEMALE
         val favoriteLesson = favoriteLessonSpinner.selectedItemPosition
 
         if (birthday.isEmpty()) {
@@ -62,14 +64,14 @@ class CreateUserProfileActivity : AppCompatActivity(), OnDateSetListener {
             return null
         }
 
-        val profile = Profile()
-        profile.favoriteMovieGenre = favoriteMovieGenre
-        profile.numberOfBrothers = numberOfBrothers
-        profile.gender = gender
-        profile.birthday = birthday
-        profile.favoriteLesson = favoriteLesson
+        val userProfile = UserProfile()
+        userProfile.favoriteMovieGenre = favoriteMovieGenre
+        userProfile.numberOfBrothers = numberOfBrothers
+        userProfile.gender = gender
+        userProfile.birthday = birthday
+        userProfile.favoriteLesson = favoriteLesson
 
-        return profile
+        return userProfile
     }
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
@@ -82,17 +84,17 @@ class CreateUserProfileActivity : AppCompatActivity(), OnDateSetListener {
 
     override fun onDestroy() {
         if (!valueReturned) {
-            createProfileListener(null)
+            createUserProfileListener(null)
         }
 
         super.onDestroy()
     }
 
     companion object {
-        private lateinit var createProfileListener: (profile: Profile?) -> Unit
+        private lateinit var createUserProfileListener: (userProfile: UserProfile?) -> Unit
 
-        fun createIntent(context: Context, onCreateProfileListener: (profile: Profile?) -> Unit): Intent {
-            createProfileListener = onCreateProfileListener
+        fun createIntent(context: Context, onCreateUserProfileListener: (userProfile: UserProfile?) -> Unit): Intent {
+            createUserProfileListener = onCreateUserProfileListener
 
             return Intent(context, CreateUserProfileActivity::class.java)
         }

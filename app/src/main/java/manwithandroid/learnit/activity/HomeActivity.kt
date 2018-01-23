@@ -59,17 +59,17 @@ class HomeActivity : AppCompatActivity(), OnNavigationItemSelectedListener {
 
     override fun onResume() {
         super.onResume()
-        // Check if need to create profile for this user
-        if (UserHelper.getConnectedUser()?.profile == null) {
+        // Check if need to create userProfile for this user
+        if (UserHelper.getConnectedUser()?.userProfile == null) {
             startActivity(CreateUserProfileActivity.createIntent(this, {
                 if (it == null) {
                     Toast.makeText(this, R.string.you_must_create_profile, Toast.LENGTH_SHORT).show()
 
                 } else {
-                    UserHelper.getConnectedUser()?.profile = it
+                    UserHelper.getConnectedUser()?.userProfile = it
 
                     UserHelper.updateUser {
-                        if (!it.isSuccessful) throw RuntimeException("Can't update the user profile to server ${it.message}")
+                        if (!it.isSuccessful) throw RuntimeException("Can't update the user userProfile to server ${it.message}")
                     }
                 }
             }))

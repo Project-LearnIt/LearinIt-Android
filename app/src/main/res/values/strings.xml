@@ -54,7 +54,7 @@
     <string name="female_title">Female</string>
     <string name="male_title">Male</string>
     <string name="favorite_lesson_title">Favorite Lesson</string>
-    <string name="user_profile_description">This data will help us build for you a custom student profile, don\'t worry, we will never public this data with your name.</string>
+    <string name="user_profile_description">This data will help us build for you a custom student userProfile, don\'t worry, we will never public this data with your name.</string>
     <string name="please_enter_favorite_movie">Please enter your favorite movie</string>
     <string name="please_enter_favorite_lesson">Please enter your favorite lesson</string>
     <string name="please_enter_brothers_number">Please enter the number of your brothers</string>
@@ -71,5 +71,8 @@
     <string name="texts_percentage_title">Texts percentage</string>
     <string name="videos_percentage_title">Videos precentage</string>
     <string name="simulations_percentage_title">Simulation percentage</string>
+    <string name="you_must_create_lesson_profile">You must create a lesson profile</string>
+    <string name="create_user_profile_title">Create Profile</string>
+    <string name="create_lesson_profile_title">Create Lesson Profile</string>
 
 </resources>

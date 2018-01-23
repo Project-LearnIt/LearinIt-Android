@@ -1,204 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/linearLayout2"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="1600dp"
-        android:gravity="center">
-
-        <Button
-            android:id="@+id/continueButton"
-            style="@style/Base.Widget.AppCompat.Button.Colored"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="32dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="24dp"
-            android:text="@string/continue_title"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/seekBar4"/>
-
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="54dp"
-            android:layout_marginStart="54dp"
-            android:layout_marginTop="8dp"
-            android:entries="@array/love_rates"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2"/>
-
-        <Spinner
-            android:id="@+id/spinner2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:entries="@array/lesson_duration"
-            app:layout_constraintEnd_toEndOf="@+id/spinner"
-            app:layout_constraintStart_toStartOf="@+id/spinner"
-            app:layout_constraintTop_toBottomOf="@+id/textView4"/>
-
-        <Spinner
-            android:id="@+id/spinner3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:entries="@array/times_a_week"
-            app:layout_constraintEnd_toEndOf="@+id/spinner2"
-            app:layout_constraintStart_toStartOf="@+id/spinner2"
-            app:layout_constraintTop_toBottomOf="@+id/textView5"/>
-
-        <Spinner
-            android:id="@+id/spinner4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            _toBottomOf="@+i"@array/good_rates"
-            android:entries="good_rates"
-            app:lay
-            tEnd_toEndOf="@+id/spinner3"
-            app:layout_
-            rt_toStartOf="@+id/spinner3"
-            app:layout_/>
-
-        <SeekBar
-            android:id="@+id/seekBar2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:max="90"
-            android:progress="45"
-            app:layout_constraintEnd_toEndOf="@+id/spinner4"
-            app:layout_constraintStart_toStartOf="@+id/spinner4"
-            app:layout_constraintTop_toBottomOf="@+id/textView8"/>
-
-        <SeekBar
-            android:id="@+id/seekBar3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:max="90"
-            android:progress="45"
-            app:layout_constraintEnd_toEndOf="@+id/seekBar2"
-            app:layout_constraintStart_toStartOf="@+id/seekBar2"
-            app:layout_constraintTop_toBottomOf="@+id/textView9"/>
-
-        <SeekBar
-            android:id="@+id/seekBar4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:max="90"
-            android:progress="45"
-            app:layout_constraintEnd_toEndOf="@+id/seekBar3"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/seekBar3"
-            app:layout_constraintTop_toBottomOf="@+id/textView10"/>
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="@string/how_much_love_title"
-            android:textColor="@color/colorCardBackgroundText"
-            android:textSize="@dimen/sub_title"
-            app:layout_constraintStart_toStartOf="@+id/spinner"
-            app:layout_constraintTop_toBottomOf="@+id/textView6"/>
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/lesson_duration_title"
-            android:textColor="@color/colorCardBackgroundText"
-            android:textSize="@dimen/sub_title"
-
-            app:layout_constraintStart_toStartOf="@+id/spinner2"
-            app:layout_constraintTop_toBottomOf="@+id/spinner"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp">
 
         <TextView
             android:id="@+id/textView6"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="32dp"
-            android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             android:text="@string/lesson_profile_description"
             android:textColor="@color/colorBackgroundText"
             android:textSize="@dimen/sub_title"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            android:textStyle="bold"/>
 
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/times_a_week_title"
-            android:textColor="@color/colorCardBackgroundText"
-            android:textSize="@dimen/sub_title"
+            android:layout_marginEnd="22dp"
+            android:layout_marginStart="22dp"
+            android:orientation="vertical">
 
-            app:layout_constraintStart_toStartOf="@+id/spinner3"
-            app:layout_constraintTop_toBottomOf="@+id/spinner2"/>
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/how_much_love_title"
+                android:textSize="@dimen/sub_title"
+                android:textStyle="bold"/>
 
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
+            <Spinner
+                android:id="@+id/loveRateSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:entries="@array/love_rates"/>
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textStyle="bold"
+                android:text="@string/lesson_duration_title"
+                android:textSize="@dimen/sub_title"/>
+
+            <Spinner
+                android:id="@+id/lessonDurationSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:entries="@array/lesson_duration"/>
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textStyle="bold"
+                android:text="@string/times_a_week_title"
+                android:textSize="@dimen/sub_title"/>
+
+            <Spinner
+                android:id="@+id/timesInWeekSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:entries="@array/times_a_week"/>
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textStyle="bold"
+                android:text="@string/how_good_you_are_in_subject_title"
+                android:textSize="@dimen/sub_title"/>
+
+            <Spinner
+                android:id="@+id/goodRateSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:entries="@array/good_rates"/>
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/texts_percentage_title"
+                android:textSize="@dimen/sub_title"
+                android:textStyle="bold"/>
+
+            <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+                android:id="@+id/textsPercentSeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:max="80"
+                android:progress="40"
+                style="@style/AppTheme.DiscreteSeekBar"/>
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="19dp"
+                android:layout_marginTop="16dp"
+                android:textStyle="bold"
+                android:text="@string/videos_percentage_title"
+                android:textSize="@dimen/sub_title"/>
+
+            <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+                android:id="@+id/videosPercentSeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:max="80"
+                android:progress="40"
+                style="@style/AppTheme.DiscreteSeekBar"/>
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="match_parent"
+                android:layout_height="22dp"
+                android:layout_marginTop="16dp"
+                android:textStyle="bold"
+                android:text="@string/simulations_percentage_title"
+                android:textSize="@dimen/sub_title"/>
+
+            <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+                android:id="@+id/simulationPercentSeekBar"
+                style="@style/AppTheme.DiscreteSeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:max="80"
+                android:progress="40"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/continueButton"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/how_good_you_are_in_subject_title"
-            android:textColor="@color/colorCardBackgroundText"
-            android:textSize="@dimen/sub_title"
-            app:layout_constraintStart_toStartOf="@+id/spinner4"
-            app:layout_constraintTop_toBottomOf="@+id/spinner3"/>
+            android:layout_marginBottom="32dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/continue_title"
+            style="@style/Base.Widget.AppCompat.Button.Colored" />
 
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/texts_percentage_title"
-            android:textColor="@color/colorCardBackgroundText"
-            android:textSize="@dimen/sub_title"
-            app:layout_constraintStart_toStartOf="@+id/spinner4"
-            app:layout_constraintTop_toBottomOf="@+id/spinner4"/>
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/videos_percentage_title"
-            android:textColor="@color/colorCardBackgroundText"
-            android:textSize="@dimen/sub_title"
-            app:layout_constraintStart_toStartOf="@+id/seekBar2"
-            app:layout_constraintTop_toBottomOf="@+id/seekBar2"/>
-
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/simulations_percentage_title"
-            android:textColor="@color/colorCardBackgroundText"
-            android:textSize="@dimen/sub_title"
-            app:layout_constraintStart_toStartOf="@+id/seekBar2"
-            app:layout_constraintTop_toBottomOf="@+id/seekBar3"/>
-
-    </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
 
 </ScrollView>

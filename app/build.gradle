@@ -183,6 +183,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:11.8.0'
     implementation 'com.eyalbira.loadingdots:loading-dots:1.0.2'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.6.3'
+    implementation 'org.adw.library:discrete-seekbar:1.0.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'

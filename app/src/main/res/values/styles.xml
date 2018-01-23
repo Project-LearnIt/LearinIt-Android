@@ -49,4 +49,10 @@
         <item name="android:layout_margin">@dimen/screen_sides_edge</item>
     </style>
 
+    <style name="AppTheme.DiscreteSeekBar" parent="Theme.AppCompat.Light.Dialog">
+        <!-- Customize your theme here. -->
+        <item name="dsb_progressColor">@color/colorAccent</item>
+        <item name="dsb_indicatorColor">@color/colorAccent</item>
+    </style>
+
 </resources>

@@ -8,6 +8,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import manwithandroid.learnit.app.LiApplication
 import manwithandroid.learnit.helpers.models.EventResults
 import manwithandroid.learnit.models.Class
+import manwithandroid.learnit.models.LessonProfile
 import manwithandroid.learnit.models.Material
 import manwithandroid.learnit.models.adapters.UserMaterials
 
@@ -24,7 +25,7 @@ object ClassesHelper {
 
     private const val MATERIALS_TAG = "materials"
 
-    fun registerClass(classObject: Class, classUid: String) {
+    fun registerClass(classObject: Class, lessonProfile: LessonProfile, classUid: String) {
         val userId = UserHelper.getConnectedUserUid(true)!!
 
         // Add the user to the class students list
@@ -38,8 +39,8 @@ object ClassesHelper {
                     if (!it.isSuccessful) unregisterClass(classUid)
                 }
 
-        // Add the class to the user profile
-        UserHelper.addClassToConnectedUser(classObject, {
+        // Add the class to the user userProfile
+        UserHelper.addClassToConnectedUser(classObject, lessonProfile, {
             if (!it.isSuccessful) unregisterClass(classUid)
         })
 
@@ -64,7 +65,7 @@ object ClassesHelper {
             if (!it.isSuccessful) throw RuntimeException("Can't unregister class from server")
         }
 
-        // Add the class to the user profile
+        // Add the class to the user userProfile
         UserHelper.removeClassFromConnectedUser(classUid)
 
         // Remove class material

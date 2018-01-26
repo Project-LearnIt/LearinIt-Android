@@ -5,9 +5,9 @@ import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import com.google.firebase.database.FirebaseDatabase
 import manwithandroid.learnit.app.LiApplication
 import manwithandroid.learnit.models.Class
+import manwithandroid.learnit.models.Lesson
 import manwithandroid.learnit.utilities.TimeUtilities
 
 /**
@@ -47,16 +47,66 @@ object LessonsBuilderHelper {
         }
     }
 
-    fun buildTask(classes: List<Class>? = UserHelper.getConnectedUser()?.classes, firstBuild: Boolean = false) {
-        UserHelper.updateLastBuildTaskTime()
+    fun buildTask(firstBuildClass: Class? = null) {
 
+        // Build classes
+        fun buildClasses() {
+            // Get classes list
+            val firstBuild = firstBuildClass != null
+            val classes = if (firstBuild) listOf(firstBuildClass!!) else UserHelper.getConnectedUser()?.classes
 
+            // Check classes list validate
+            if (classes == null || classes.isEmpty()) return
 
-        FirebaseDatabase.getInstance().getReference("testAlarm").push().setValue("\"build task run ${System.currentTimeMillis()}\" by ${UserHelper
-                .getConnectedUser()?.name}")
+            val user = UserHelper.getConnectedUser()!!
+
+            // Move the uncompleted lessons to their list
+            user.uncompletedLessons = user.weekLessons
+
+            // Clear lessons and create new list if needs to
+            if (user.weekLessons == null) user.weekLessons = mutableListOf()
+            else user.weekLessons?.clear()
+
+            // Build lessons for each class
+            for (classObject in classes) {
+                user.weekLessons?.addAll(buildLessons(classObject, firstBuild))
+            }
+
+            if (!firstBuild) {
+                UserHelper.updateLastBuildTaskTime()
+            }
+
+            // Update the user data to the server
+            UserHelper.updateUser {
+
+            }
+        }
+
+        // Check if needs to auto login
+        if (!UserHelper.isConnectedUser()) {
+            UserHelper.connectUser(loginListener = {
+                if (it.isSuccessful) buildClasses()
+            })
+
+        } else {
+            buildClasses()
+        }
     }
 
+    private fun buildLessons(classObject: Class, firstBuild: Boolean): List<Lesson> {
 
+        //todo add content
+
+        // placeholder code:::
+        val lesson = Lesson()
+        lesson.classId = classObject.key
+        lesson.name = "test lesson"
+        lesson.description = "this is a test class"
+        lesson.toWeekOfYear = 3
+        lesson.toYear = 2018
+
+        return listOf(lesson, lesson, lesson)
+    }
 
     class LessonsBuildTaskReceiver : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {

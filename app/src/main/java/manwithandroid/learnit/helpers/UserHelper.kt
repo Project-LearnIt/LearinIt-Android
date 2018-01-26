@@ -53,12 +53,14 @@ object UserHelper {
         LiApplication.setLastPassword(password)
     }
 
-    fun updateLastBuildTaskTime(date: Date = Date(TimeUtilities.currentClearTimeMillis())) {
+    fun updateLastBuildTaskTime(date: Date = Date(TimeUtilities.currentClearTimeMillis()), updateToServer: Boolean = false) {
         connectedUser?.lastLessonsBuildTask = date
 
-        // Update the user
-        updateUser {
+        // Update the user if needs to
+        if (updateToServer) {
+            updateUser {
 
+            }
         }
     }
 
@@ -131,7 +133,12 @@ object UserHelper {
         }
     }
 
-    fun connectUser(email: String, password: String, loginListener: (eventResults: EventResults<User>) -> Unit?) {
+    fun connectUser(email: String? = LiApplication.getLastEmail(),
+                    password: String? = LiApplication.getLastPassword(),
+                    loginListener: (eventResults: EventResults<User>) -> Unit?) {
+
+        if (email == null || password == null) return
+
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password).addOnCompleteListener {
             if (it.isSuccessful) {
                 LiApplication.setLastEmail(email)

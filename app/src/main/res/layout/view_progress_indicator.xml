@@ -14,7 +14,7 @@
         android:id="@+id/positiveBar"
         android:layout_width="0dp"
         android:layout_weight="90"
-        android:layout_height="10dp"
+        android:layout_height="12dp"
         android:layout_marginEnd="-8dp"
         android:layout_gravity="center_vertical"
         android:elevation="-2dp"
@@ -24,8 +24,7 @@
         android:id="@+id/indicatorCircleHolder"
         android:layout_width="@dimen/medium_sqrt_content_size"
         android:layout_height="@dimen/medium_sqrt_content_size"
-        android:background="@drawable/progress_indicator_circle"
-        android:elevation="1dp">
+        android:background="@drawable/progress_indicator_circle">
 
         <TextView
             android:id="@+id/indicatorCircleTextView"
@@ -39,7 +38,7 @@
             android:id="@+id/checkView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="2dp"
+            android:layout_margin="3dp"
             android:background="@drawable/ic_check" />
 
     </FrameLayout>
@@ -48,7 +47,7 @@
         android:id="@+id/negativeBar"
         android:layout_width="0dp"
         android:layout_weight="10"
-        android:layout_height="10dp"
+        android:layout_height="12dp"
         android:layout_marginStart="-8dp"
         android:layout_gravity="center_vertical"
         android:elevation="-2dp"

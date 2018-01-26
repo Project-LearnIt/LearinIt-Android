@@ -46,7 +46,7 @@
         <item name="android:text">test text</item>
         <item name="android:textColor">@color/colorBackgroundText</item>
         <item name="android:textSize">@dimen/title</item>
-        <item name="android:layout_margin">@dimen/screen_sides_edge</item>
+        <item name="android:layout_margin">@dimen/card_title_sides_edge</item>
     </style>
 
     <style name="AppTheme.DiscreteSeekBar" parent="Theme.AppCompat.Light.Dialog">

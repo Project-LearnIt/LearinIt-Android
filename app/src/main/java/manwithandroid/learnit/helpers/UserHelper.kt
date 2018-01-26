@@ -53,7 +53,7 @@ object UserHelper {
         LiApplication.setLastPassword(password)
     }
 
-    fun updateBuildTaskTime(date: Date = Date(TimeUtilities.currentClearTimeMillis())) {
+    fun updateLastBuildTaskTime(date: Date = Date(TimeUtilities.currentClearTimeMillis())) {
         connectedUser?.lastLessonsBuildTask = date
 
         // Update the user

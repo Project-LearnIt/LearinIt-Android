@@ -1,5 +1,6 @@
 package manwithandroid.learnit.utilities
 
+
 object UiUtilities {
 
     /**
@@ -14,5 +15,4 @@ object UiUtilities {
         val blue = ((android.graphics.Color.blue(color) * (1 - factor) / 255 + factor) * 255).toInt()
         return android.graphics.Color.argb(android.graphics.Color.alpha(color), red, green, blue)
     }
-
 }

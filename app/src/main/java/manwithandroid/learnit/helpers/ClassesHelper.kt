@@ -50,6 +50,9 @@ object ClassesHelper {
         })
 
         //todo add user finished material
+
+        // First build task
+        LessonsBuilderHelper.buildTask(listOf(classObject), true)
     }
 
     private fun unregisterClass(classUid: String) {

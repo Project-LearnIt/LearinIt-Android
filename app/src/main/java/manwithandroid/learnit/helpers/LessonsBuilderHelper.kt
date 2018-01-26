@@ -47,12 +47,16 @@ object LessonsBuilderHelper {
         }
     }
 
-    private fun buildTask(classes: List<Class>? = UserHelper.getConnectedUser()?.classes) {
-        UserHelper.updateBuildTaskTime()
+    fun buildTask(classes: List<Class>? = UserHelper.getConnectedUser()?.classes, firstBuild: Boolean = false) {
+        UserHelper.updateLastBuildTaskTime()
+
+
 
         FirebaseDatabase.getInstance().getReference("testAlarm").push().setValue("\"build task run ${System.currentTimeMillis()}\" by ${UserHelper
                 .getConnectedUser()?.name}")
     }
+
+
 
     class LessonsBuildTaskReceiver : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {

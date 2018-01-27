@@ -8,6 +8,7 @@ import android.content.Intent
 import manwithandroid.learnit.app.LiApplication
 import manwithandroid.learnit.models.Class
 import manwithandroid.learnit.models.Lesson
+import manwithandroid.learnit.models.Program
 import manwithandroid.learnit.utilities.TimeUtilities
 
 /**
@@ -105,9 +106,13 @@ object LessonsBuilderHelper {
 
     private fun buildLessons(classObject: Class, firstBuild: Boolean): List<Lesson> {
 
-        val program = UserHelper.getConnectedUser().getProgramFor(classObject)
+        val program = UserHelper.getProgramOf(classObject.key)
+
+        UserHelper.updateProgramOf(classObject.key, program)
 
         ClassesHelper.getSubjectsLeftFor(classObject.key)
+
+        ClassesHelper.setUsedSubjects(classObject.key, listOf(1, 2, 3))
 
         //todo add content
 

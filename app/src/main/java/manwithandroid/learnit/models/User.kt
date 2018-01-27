@@ -20,6 +20,12 @@ class User {
 
     var classes: MutableList<Class>? = null
 
+    // programs map by class key and the program of this class
+    var programs: MutableMap<String, Program>? = null
+
+    // completed subjects map by class key and the list of the indexes of the completed subjects
+    var completedSubjects: MutableMap<String, MutableList<Int>>? = null
+
     // Lessons profiles map by class key and lesson profile
     var lessonsProfiles: MutableMap<String, LessonProfile>? = null
 

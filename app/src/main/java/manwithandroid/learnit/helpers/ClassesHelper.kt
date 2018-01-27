@@ -10,6 +10,7 @@ import manwithandroid.learnit.helpers.models.EventResults
 import manwithandroid.learnit.models.Class
 import manwithandroid.learnit.models.LessonProfile
 import manwithandroid.learnit.models.Material
+import manwithandroid.learnit.models.Subject
 import manwithandroid.learnit.models.adapters.UserMaterials
 
 /**
@@ -24,6 +25,19 @@ object ClassesHelper {
     private const val STUDENTS_REFERENCE_NAME = "students"
 
     private const val MATERIALS_TAG = "materials"
+
+    fun getSubjectsLeftFor(classKey: String): List<Subject> {
+        val subjectsList: MutableList<Subject>? = getMaterialsFromCash()?.materials?.get(classKey)?.subjects
+                ?: throw IllegalStateException("Class materials not found")
+
+        val usedSubjectsIndexs = UserHelper.getUsedSubjectsOf(classKey) ?: return subjectsList!!
+
+        return subjectsList!!.filterIndexed({ i: Int, _: Subject -> usedSubjectsIndexs.contains(i) })
+    }
+
+    fun setUsedSubjects(classKey: String, indexsList: List<Int>) {
+        UserHelper.setUsedSubjects(classKey, indexsList)
+    }
 
     fun registerClass(classObject: Class, lessonProfile: LessonProfile, classUid: String) {
         val userId = UserHelper.getConnectedUserUid(true)!!

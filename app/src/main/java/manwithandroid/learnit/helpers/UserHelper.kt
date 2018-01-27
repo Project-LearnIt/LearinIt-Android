@@ -6,6 +6,7 @@ import manwithandroid.learnit.app.LiApplication
 import manwithandroid.learnit.helpers.models.EventResults
 import manwithandroid.learnit.models.Class
 import manwithandroid.learnit.models.LessonProfile
+import manwithandroid.learnit.models.Program
 import manwithandroid.learnit.models.User
 import manwithandroid.learnit.utilities.TimeUtilities
 import java.lang.RuntimeException
@@ -35,12 +36,49 @@ object UserHelper {
         }
     }
 
-    fun getConnectedUser() = connectedUser
+    fun getConnectedUser(throwError: Boolean = false) = if (connectedUser == null && throwError) throw IllegalStateException("There is no connected user") else connectedUser
 
     fun isConnectedUser() = (connectedUser != null) && (getConnectedUserUid() != null)
 
     fun getConnectedUserUid(throwError: Boolean = false) = FirebaseAuth.getInstance().currentUser?.uid
             ?: if (throwError) throw RuntimeException("There is no connected user") else null
+
+    fun getProgramOf(classKey: String): Program {
+        return getConnectedUser(true)!!.programs?.get(classKey)!!
+    }
+
+    fun updateProgramOf(classKey: String, program: Program, updateToServer: Boolean = true) {
+        val connectedUser = getConnectedUser(true)!!
+
+        if (connectedUser.programs == null) {
+            connectedUser.programs = mutableMapOf()
+        }
+
+        connectedUser.programs!![classKey] = program
+
+        if (updateToServer) updateUser {}
+    }
+
+    fun getUsedSubjectsOf(classKey: String) =
+            getConnectedUser(true)!!.completedSubjects?.get(classKey)
+
+    fun setUsedSubjects(classKey: String, usedIndexs: List<Int>) {
+        val connectedUser = getConnectedUser(true)!!
+
+        if (connectedUser.completedSubjects == null) {
+            connectedUser.completedSubjects = mutableMapOf()
+        }
+
+        if (connectedUser.completedSubjects!![classKey] == null) {
+            connectedUser.completedSubjects!![classKey] = mutableListOf()
+        }
+
+        connectedUser.completedSubjects!![classKey]!!.addAll(usedIndexs)
+
+        UserHelper.updateUser {
+
+        }
+    }
 
     fun signOut() {
         FirebaseAuth.getInstance().signOut()
@@ -57,11 +95,7 @@ object UserHelper {
         connectedUser?.lastLessonsBuildTask = date
 
         // Update the user if needs to
-        if (updateToServer) {
-            updateUser {
-
-            }
-        }
+        if (updateToServer) updateUser {}
     }
 
     fun isConnectedUserInClass(classUid: String): Boolean {
@@ -82,6 +116,11 @@ object UserHelper {
 
         connectedUser?.classes!!.add(classObject)
         connectedUser?.lessonsProfiles!![classObject.key] = lessonProfile
+
+        // Build first program
+        updateProgramOf(classObject.key,
+                ProgramBuilderHelper.buildFirstProgram(lessonProfile),
+                false)
 
         updateUser({
             if (it.isSuccessful) {

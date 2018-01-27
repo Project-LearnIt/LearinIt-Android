@@ -2,6 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -10,7 +11,8 @@
     android:paddingBottom="8dp"
     android:paddingRight="@dimen/card_sides_edge"
     android:paddingLeft="@dimen/card_sides_edge"
-    android:background="?android:attr/selectableItemBackground">
+    android:background="?android:attr/selectableItemBackground"
+    tools:ignore="Overdraw">
 
     <RelativeLayout
         android:id="@+id/imageHolder"
@@ -23,7 +25,8 @@
         <ImageView
             android:id="@+id/classImageView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:contentDescription="@string/class_image"/>
 
     </RelativeLayout>
 
@@ -32,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:text="test"
+        android:text="@string/text_placeholder"
         android:textColor="@color/colorCardBackgroundText"
         android:textSize="@dimen/sub_title"
         android:layout_toEndOf="@+id/imageHolder"

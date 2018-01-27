@@ -7,15 +7,15 @@ class Media {
 
     companion object {
         /* Levels */
-        val LEVEL_EASY = 0
-        val LEVEL_NORMAL = 1
-        val LEVEL_HARD = 2
+        const val LEVEL_EASY = 0
+        const val LEVEL_NORMAL = 1
+        const val LEVEL_HARD = 2
 
         /* Types */
-        val TYPE_TEXT = 0
-        val TYPE_VIDEO = 1
-        val TYPE_SOUND = 2
-        val TYPE_IMAGE = 3
+        const val TYPE_TEXT = 0
+        const val TYPE_VIDEO = 1
+        const val TYPE_SOUND = 2
+        const val TYPE_IMAGE = 3
     }
 
     var level: Int = LEVEL_EASY

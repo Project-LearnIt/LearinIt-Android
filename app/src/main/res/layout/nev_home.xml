@@ -18,21 +18,21 @@
         android:layout_height="54dp"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:layout_marginBottom="5dp"
-        android:layout_marginStart="-4dp"
-        android:src="@drawable/ic_person"/>
+        android:src="@drawable/ic_person"
+        android:contentDescription="@string/user_profile"/>
 
     <TextView
         android:id="@+id/nameTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="name"
+        android:text="@string/text_placeholder"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
 
     <TextView
         android:id="@+id/emailTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="email@gmail.com"/>
+        android:text="@string/text_placeholder"/>
 
 </LinearLayout>

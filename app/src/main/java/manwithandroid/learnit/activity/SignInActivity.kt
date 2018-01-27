@@ -109,7 +109,7 @@ class SignInActivity : AppCompatActivity(), TabListener, OnPageChangeListener {
 
         override fun getCount() = fragments.size
 
-        override fun getPageTitle(position: Int) = context.getString(fragmentsNames[position])
+        override fun getPageTitle(position: Int) = context.getString(fragmentsNames[position])!!
 
     }
 }

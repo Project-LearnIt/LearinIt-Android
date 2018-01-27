@@ -69,7 +69,7 @@
     <string name="times_a_week_title">Times a week</string>
     <string name="how_good_you_are_in_subject_title">How good you are in this subject?</string>
     <string name="texts_percentage_title">Texts percentage</string>
-    <string name="videos_percentage_title">Videos precentage</string>
+    <string name="videos_percentage_title">Videos percentage</string>
     <string name="simulations_percentage_title">Simulation percentage</string>
     <string name="you_must_create_lesson_profile">You must create a lesson profile</string>
     <string name="create_user_profile_title">Create Profile</string>
@@ -78,5 +78,12 @@
     <string name="are_you_sure_you_want_to_exit">Are you sure you want to exit?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="application_icon">application icon</string>
+    <string name="image_placeholder">Image placeholder</string>
+    <string name="class_image">Class image</string>
+    <string name="user_profile">User profile</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="text_placeholder">text placeholder</string>
 
 </resources>

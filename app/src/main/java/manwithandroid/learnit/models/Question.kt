@@ -6,9 +6,9 @@ package manwithandroid.learnit.models
 class Question {
 
     companion object {
-        val TYPE_CHOICE = 0
-        val TYPE_OPEN = 1
-        val TYPE_OPEN_SPECIFIC = 2
+        const val TYPE_CHOICE = 0
+        const val TYPE_OPEN = 1
+        const val TYPE_OPEN_SPECIFIC = 2
     }
 
     var question: String = ""

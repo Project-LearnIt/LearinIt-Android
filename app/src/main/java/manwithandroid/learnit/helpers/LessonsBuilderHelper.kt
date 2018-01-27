@@ -18,19 +18,26 @@ object LessonsBuilderHelper {
     /* Finals */
     private const val ALREADY_SET_ALARM_TAG = "AlreadySetBuildTaskAlarm"
 
-    private const val BUILD_TASK_CODE = 3345
     private const val INTERVAL_WEEK = AlarmManager.INTERVAL_DAY * 7
+
+    private const val BUILD_TASK_CODE = 3345
+
+    lateinit var lessonBuilderTaskIntent: PendingIntent
+
+    fun initBuildTaskIntent(context: Context) {
+        lessonBuilderTaskIntent = PendingIntent.getBroadcast(
+                context,
+                LessonsBuilderHelper.BUILD_TASK_CODE,
+                Intent(context, LessonsBuilderHelper.LessonsBuildTaskReceiver::class.java),
+                PendingIntent.FLAG_CANCEL_CURRENT)
+    }
 
     /* Lessons build task */
     fun initBuildTask(force: Boolean = false, time: Long = TimeUtilities.getNextFirstDay()) {
         if (force || !LiApplication.pref.getBoolean(ALREADY_SET_ALARM_TAG, false)) {
-            val alarmManager = LiApplication.context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
-            val pendingIntent = PendingIntent.getBroadcast(LiApplication.context,
-                    BUILD_TASK_CODE, Intent(LiApplication.context, LessonsBuildTaskReceiver::class.java), PendingIntent.FLAG_CANCEL_CURRENT)
-
-            alarmManager.cancel(pendingIntent)
-            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, time, INTERVAL_WEEK, pendingIntent)
+            LiApplication.alarmManager.cancel(lessonBuilderTaskIntent)
+            LiApplication.alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, time, INTERVAL_WEEK, lessonBuilderTaskIntent)
 
             LiApplication.pref.edit().putBoolean(ALREADY_SET_ALARM_TAG, true).apply()
         }
@@ -107,6 +114,8 @@ object LessonsBuilderHelper {
         lesson.description = "this is a test class"
         lesson.toWeekOfYear = 3
         lesson.toYear = 2018
+
+        print(firstBuild)
 
         return listOf(lesson, lesson, lesson)
     }

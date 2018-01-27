@@ -4,9 +4,7 @@ import android.app.Activity
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import manwithandroid.learnit.R
-import manwithandroid.learnit.adapters.holders.ClassHolder
 import manwithandroid.learnit.adapters.holders.LessonHolder
-import manwithandroid.learnit.models.Class
 import manwithandroid.learnit.models.Lesson
 
 /**

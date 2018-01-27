@@ -12,7 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="54dp"
         android:layout_marginEnd="8dp"
-        android:src="@drawable/ic_logo_dark"/>
+        android:src="@drawable/ic_logo_dark"
+        android:contentDescription="@string/application_icon"/>
 
     <EditText
         android:id="@+id/emailEditText"

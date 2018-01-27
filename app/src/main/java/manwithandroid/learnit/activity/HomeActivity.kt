@@ -40,7 +40,7 @@ class HomeActivity : AppCompatActivity(), OnNavigationItemSelectedListener {
         supportActionBar?.title = UserHelper.getConnectedUser()?.name
 
         val toggle = ActionBarDrawerToggle(
-                this, drawerLayout, toolbar, R.string.abc_capital_off, R.string.abc_capital_on)
+                this, drawerLayout, toolbar, R.string.open, R.string.close)
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
@@ -144,7 +144,7 @@ class HomeActivity : AppCompatActivity(), OnNavigationItemSelectedListener {
         when (item.itemId) {
         //R.key.settingsNevButton ->
         //R.key.aboutNevButton ->
-            R.id.signoutNevButton -> {
+            R.id.signOutNevButton -> {
                 UserHelper.signOut()
                 startActivity(Intent(this, SignInActivity::class.java))
                 finish()

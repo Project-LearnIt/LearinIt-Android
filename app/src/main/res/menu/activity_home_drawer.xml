@@ -18,8 +18,8 @@
                 android:title="@string/about_title"/>
 
             <item
-                android:id="@+id/signoutNevButton"
-                android:title="@string/signout_title"/>
+                android:id="@+id/signOutNevButton"
+                android:title="@string/sign_out_title"/>
         </menu>
     </item>
 

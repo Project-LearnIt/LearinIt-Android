@@ -11,6 +11,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
+        android:fullBackupContent="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".activity.SplashActivity">
             <intent-filter>
@@ -33,7 +34,7 @@
 
         <receiver android:name=".helpers.LessonsBuilderHelper$LessonsBuildTaskReceiver"
                   android:enabled="true"
-                  android:exported="true" />
+                  android:exported="true"/>
 
     </application>
 

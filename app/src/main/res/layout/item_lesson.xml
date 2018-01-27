@@ -2,6 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
@@ -9,7 +10,8 @@
     android:paddingBottom="10dp"
     android:paddingRight="@dimen/card_sides_edge"
     android:paddingLeft="@dimen/card_sides_edge"
-    android:background="?android:attr/selectableItemBackground">
+    android:background="?android:attr/selectableItemBackground"
+    tools:ignore="Overdraw">
 
     <manwithandroid.learnit.gui.NeutralCheckBox
         android:id="@+id/neutralCheckBox"
@@ -22,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:text="lesson name"
+        android:text="@string/text_placeholder"
         android:textColor="@color/colorCardBackgroundText"
         android:textSize="@dimen/sub_title" />
 

@@ -1,5 +1,6 @@
 package manwithandroid.learnit.app
 
+import android.app.AlarmManager
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
@@ -15,16 +16,18 @@ class LiApplication : Application() {
 
         private var installed = false
 
-        lateinit var context: Context
-        lateinit var self: LiApplication
         lateinit var pref: SharedPreferences
+
+        lateinit var alarmManager: AlarmManager
 
         fun installApplication(context: Context) {
             if (installed) return
 
-            this.context = context
-
             pref = context.getSharedPreferences("LiApplication", Context.MODE_PRIVATE)
+
+            alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+
+            LessonsBuilderHelper.initBuildTaskIntent(context)
 
             FirebaseRemoteConfig.getInstance().setDefaults(R.xml.remote_config_defaults)
 
@@ -41,8 +44,6 @@ class LiApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-
-        self = this
 
         installApplication(this)
 

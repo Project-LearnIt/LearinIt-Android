@@ -120,6 +120,7 @@ class HomeActivity : AppCompatActivity(), OnNavigationItemSelectedListener {
         classesTextView.visibility = if (hasClasses) View.VISIBLE else View.GONE
 
         noClassesPlaceholder.visibility = if (!hasWeekLessons && !hasUncompletedLessons && !hasClasses) View.VISIBLE else View.GONE
+        spacer.visibility = if (hasWeekLessons || hasUncompletedLessons || hasClasses) View.VISIBLE else View.GONE
     }
 
     override fun onBackPressed() {

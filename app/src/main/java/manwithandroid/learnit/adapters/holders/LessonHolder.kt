@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.TextView
 import manwithandroid.learnit.R
+import manwithandroid.learnit.activity.LessonActivity
 import manwithandroid.learnit.gui.NeutralCheckBox
 import manwithandroid.learnit.models.Lesson
 
@@ -26,7 +27,10 @@ class LessonHolder(view: View) : RecyclerView.ViewHolder(view) {
         })
 
         itemView.setOnClickListener {
-            //todo open this class
+            itemView.context.startActivity(LessonActivity.createIntent(
+                    itemView.context,
+                    lesson
+            ))
         }
     }
 }

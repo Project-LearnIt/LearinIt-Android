@@ -74,5 +74,9 @@
     <string name="you_must_create_lesson_profile">You must create a lesson profile</string>
     <string name="create_user_profile_title">Create Profile</string>
     <string name="create_lesson_profile_title">Create Lesson Profile</string>
+    <string name="exit_warning">Exit Warning</string>
+    <string name="are_you_sure_you_want_to_exit">Are you sure you want to exit?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 
 </resources>

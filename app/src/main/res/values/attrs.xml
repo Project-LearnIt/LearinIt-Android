@@ -4,4 +4,11 @@
         <attr name="progress" format="integer" />
         <attr name="factor" format="float" />
     </declare-styleable>
+    <declare-styleable name="NeutralCheckBox">
+        <attr name="state" format="enum">
+            <enum name="unchecked" value="-1"/>
+            <enum name="neutral" value="0"/>
+            <enum name="checked" value="1"/>
+        </attr>
+    </declare-styleable>
 </resources>

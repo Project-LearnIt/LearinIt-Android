@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/frameView"
+    android:layout_width="@dimen/small_sqrt_content_size"
+    android:layout_height="@dimen/small_sqrt_content_size"
+    android:background="@drawable/neutral_checkbox_background"
+    android:padding="2dp">
+
+    <View
+        android:id="@+id/checkView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_check" />
+
+    <View
+        android:id="@+id/closeView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_close" />
+
+</FrameLayout>

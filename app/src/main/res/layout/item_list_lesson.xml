@@ -10,7 +10,7 @@
         android:id="@+id/image_holder"
         android:layout_width="@dimen/small_sqrt_content_size"
         android:layout_height="@dimen/small_sqrt_content_size"
-        android:background="@drawable/check_box"
+        android:background="@drawable/neutral_checkbox_background"
         android:padding="2dp"
         android:layout_alignParentStart="true"
         android:layout_gravity="center"

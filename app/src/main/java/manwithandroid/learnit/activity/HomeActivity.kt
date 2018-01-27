@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.content_home.*
 import kotlinx.android.synthetic.main.nev_home.*
 import manwithandroid.learnit.R
 import manwithandroid.learnit.adapters.ClassesAdapter
+import manwithandroid.learnit.adapters.LessonsAdapter
 import manwithandroid.learnit.dialogs.JoinClassDialog
 import manwithandroid.learnit.helpers.LessonsBuilderHelper
 import manwithandroid.learnit.helpers.UserHelper
@@ -27,6 +28,8 @@ import manwithandroid.learnit.helpers.UserHelper
 class HomeActivity : AppCompatActivity(), OnNavigationItemSelectedListener {
 
     /* Adapters */
+    private val lessonsAdapter = LessonsAdapter(this)
+    private val uncompletedLessonsAdapter = LessonsAdapter(this)
     private val classesAdapter = ClassesAdapter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,6 +55,14 @@ class HomeActivity : AppCompatActivity(), OnNavigationItemSelectedListener {
         }
 
         // Install recyclers views
+        weekLessonsRecyclerView.layoutManager = LinearLayoutManager(this)
+        weekLessonsRecyclerView.setHasFixedSize(true)
+        weekLessonsRecyclerView.adapter = lessonsAdapter
+
+        uncompletedLessonsRecyclerView.layoutManager = LinearLayoutManager(this)
+        uncompletedLessonsRecyclerView.setHasFixedSize(true)
+        uncompletedLessonsRecyclerView.adapter = uncompletedLessonsAdapter
+
         classesRecyclerView.layoutManager = LinearLayoutManager(this)
         classesRecyclerView.setHasFixedSize(true)
         classesRecyclerView.adapter = classesAdapter
@@ -80,9 +91,17 @@ class HomeActivity : AppCompatActivity(), OnNavigationItemSelectedListener {
         // Update lists
         val connectedUser = UserHelper.getConnectedUser()!!
 
-        val hasWeekLessons = false
-        val hasUncompletedLessons = false
-        val hasClasses = connectedUser.classes != null && (connectedUser.classes!!.size > 0)
+        val hasWeekLessons = connectedUser.weekLessons != null && (connectedUser.weekLessons!!.isNotEmpty())
+        val hasUncompletedLessons = connectedUser.uncompletedLessons != null && (connectedUser.uncompletedLessons!!.isNotEmpty())
+        val hasClasses = connectedUser.classes != null && (connectedUser.classes!!.isNotEmpty())
+
+        if (hasWeekLessons) {
+            lessonsAdapter.updateLessonsList(connectedUser.weekLessons!!)
+        }
+
+        if (hasUncompletedLessons) {
+            uncompletedLessonsAdapter.updateLessonsList(connectedUser.uncompletedLessons!!)
+        }
 
         if (hasClasses) {
             classesAdapter.updateClassesList(connectedUser.classes!!)

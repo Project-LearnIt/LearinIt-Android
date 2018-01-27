@@ -61,7 +61,8 @@ object LessonsBuilderHelper {
             val user = UserHelper.getConnectedUser()!!
 
             // Move the uncompleted lessons to their list
-            user.uncompletedLessons = user.weekLessons
+            if (user.uncompletedLessons == null) user.uncompletedLessons = mutableListOf()
+            if (user.weekLessons != null) user.uncompletedLessons!!.addAll(user.weekLessons!!)
 
             // Clear lessons and create new list if needs to
             if (user.weekLessons == null) user.weekLessons = mutableListOf()

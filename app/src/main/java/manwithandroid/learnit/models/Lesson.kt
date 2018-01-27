@@ -5,8 +5,16 @@ package manwithandroid.learnit.models
  */
 class Lesson {
 
+    companion object {
+        const val STATE_FAILED = -1
+        const val STATE_NEUTRAL = 0
+        const val STATE_SUCCESSES = 1
+    }
+
     var name: String = ""
     var description: String = ""
+
+    var state: Int = STATE_NEUTRAL
 
     var classId: String = ""
 

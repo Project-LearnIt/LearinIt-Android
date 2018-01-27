@@ -1,6 +1,6 @@
 package manwithandroid.learnit.models
 
-import java.util.*
+import java.util.Date
 
 /**
  * Created by roi-amiel on 1/6/18.

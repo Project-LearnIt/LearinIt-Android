@@ -105,6 +105,10 @@ object LessonsBuilderHelper {
 
     private fun buildLessons(classObject: Class, firstBuild: Boolean): List<Lesson> {
 
+        val program = UserHelper.getConnectedUser().getProgramFor(classObject)
+
+        ClassesHelper.getSubjectsLeftFor(classObject.key)
+
         //todo add content
 
         // placeholder code:::

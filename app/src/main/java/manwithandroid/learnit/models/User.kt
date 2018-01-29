@@ -1,5 +1,6 @@
 package manwithandroid.learnit.models
 
+import com.google.firebase.firestore.Exclude
 import java.util.*
 
 /**
@@ -9,6 +10,9 @@ class User {
 
     var name: String = ""
     var email: String = ""
+
+    @Exclude
+    var userExtra: UserExtra? = null
 
     var lastLessonsBuildTask: Date? = null
 
@@ -20,8 +24,8 @@ class User {
 
     var classes: MutableList<Class>? = null
 
-    // programs map by class key and the program of this class
-    var programs: MutableMap<String, Program>? = null
+    // currentPrograms map by class key and the program of this class
+    var currentPrograms: MutableMap<String, Program>? = null
 
     // completed subjects map by class key and the list of the indexes of the completed subjects
     var completedSubjects: MutableMap<String, MutableList<Int>>? = null

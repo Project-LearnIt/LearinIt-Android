@@ -4,10 +4,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import manwithandroid.learnit.app.LiApplication
 import manwithandroid.learnit.helpers.models.EventResults
-import manwithandroid.learnit.models.Class
-import manwithandroid.learnit.models.ClassProfile
-import manwithandroid.learnit.models.Program
-import manwithandroid.learnit.models.User
+import manwithandroid.learnit.models.*
 import manwithandroid.learnit.utilities.TimeUtilities
 import java.lang.RuntimeException
 import java.util.*
@@ -19,6 +16,7 @@ object UserHelper {
 
     /* Finals */
     private const val USERS_REFERENCE_NAME = "users"
+    private const val USERS_EXTRA_REFERENCE_NAME = "usersExtra"
 
     private var connectedUser: User? = null
 
@@ -36,6 +34,30 @@ object UserHelper {
         }
     }
 
+    fun getUserExtra(onFinish: (eventResults: EventResults<UserExtra>) -> Unit) {
+        FirebaseFirestore.getInstance().collection(USERS_EXTRA_REFERENCE_NAME).document(getConnectedUserUid(true)!!).get().addOnCompleteListener({
+            if (!it.isSuccessful) {
+                onFinish(EventResults(it.exception?.localizedMessage!!))
+            } else {
+                val userExtra = it.result.toObject(UserExtra::class.java)
+
+                connectedUser?.userExtra = userExtra
+
+                onFinish(EventResults(userExtra))
+            }
+        })
+    }
+
+    fun updateUserExtra(onFinish: (eventResults: EventResults<Any>) -> Unit) {
+        val user = getConnectedUser(true)!!
+
+        if (user.userExtra == null || !user.userExtra!!.hasChanged()) return
+
+        FirebaseFirestore.getInstance().collection(USERS_EXTRA_REFERENCE_NAME).document(getConnectedUserUid(true)!!).set(user.userExtra!!).addOnCompleteListener {
+            onFinish(EventResults(it.isSuccessful))
+        }
+    }
+
     fun getConnectedUser(throwError: Boolean = false) = if (connectedUser == null && throwError) throw IllegalStateException("There is no connected user") else connectedUser
 
     fun isConnectedUser() = (connectedUser != null) && (getConnectedUserUid() != null)
@@ -44,19 +66,21 @@ object UserHelper {
             ?: if (throwError) throw RuntimeException("There is no connected user") else null
 
     fun getProgramOf(classKey: String): Program {
-        return getConnectedUser(true)!!.programs?.get(classKey)!!
+        return getConnectedUser(true)!!.currentPrograms?.get(classKey)!!
     }
 
     fun updateProgramOf(classKey: String, program: Program, updateToServer: Boolean = true) {
         val connectedUser = getConnectedUser(true)!!
 
-        if (connectedUser.programs == null) {
-            connectedUser.programs = mutableMapOf()
+        if (connectedUser.currentPrograms == null) {
+            connectedUser.currentPrograms = mutableMapOf()
         }
 
-        connectedUser.programs!![classKey] = program
+        connectedUser.currentPrograms!![classKey] = program
 
         if (updateToServer) updateUser {}
+
+        // todo add to program history
     }
 
     fun getUsedSubjectsOf(classKey: String) =
@@ -159,6 +183,8 @@ object UserHelper {
 
                 } else {
                     updateUserListener(EventResults(true))
+
+                    updateUserExtra {}
                 }
             }
         }
@@ -205,6 +231,9 @@ object UserHelper {
                     getUserListener(EventResults("User from server is null"))
                 }
 
+                getUserExtra {
+
+                }
             } else {
                 getUserListener(EventResults(if (it.exception != null) it.exception?.message.toString() else "Unknown error"))
             }

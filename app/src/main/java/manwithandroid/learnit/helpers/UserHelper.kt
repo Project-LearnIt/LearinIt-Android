@@ -143,7 +143,7 @@ object UserHelper {
 
         // Build first program
         updateProgramOf(classObject.key,
-                ProgramBuilderHelper.buildFirstProgram(classObject.key, classProfile),
+                ProgramBuilderHelper.buildFirstProgram(classObject.key, classProfile, null /* todo get form server */),
                 false)
 
         updateUser({

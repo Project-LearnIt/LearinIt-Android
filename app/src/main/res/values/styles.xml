@@ -27,6 +27,7 @@
     <!-- Base application theme. -->
     <style name="AppThemeLayouts" parent="AppTheme">
         <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:background">@color/colorBackground</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>

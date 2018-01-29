@@ -9,22 +9,22 @@ class EventResults<T> {
     var resultObject: T?
     var message: String
 
-    constructor(isSuccess: Boolean = false, resultObject: T? = null, message: String = "") {
+    constructor(isSuccess: Boolean = false, resultObject: T? = null, message: String? = "") {
         this.isSuccessful = isSuccess
         this.resultObject = resultObject
-        this.message = message
+        this.message = message ?: ""
     }
 
-    constructor(message: String = "", isSuccess: Boolean = false, resultObject: T? = null) {
+    constructor(message: String? = "", isSuccess: Boolean = false, resultObject: T? = null) {
         this.isSuccessful = isSuccess
         this.resultObject = resultObject
-        this.message = message
+        this.message = message ?: ""
     }
 
-    constructor(resultObject: T? = null, isSuccess: Boolean = false, message: String = "") {
+    constructor(resultObject: T? = null, isSuccess: Boolean = false, message: String? = "") {
         this.isSuccessful = isSuccess
         this.resultObject = resultObject
-        this.message = message
+        this.message = message ?: ""
     }
 }
 

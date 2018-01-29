@@ -18,7 +18,7 @@ class UserExtra {
         }
 
     // Map of all classes (bey key) and thier lessons resualts
-    var lessonsResults: MutableMap<String, List<LessonResult>>? = null
+    var classesResults: MutableMap<String, List<LessonResult>>? = null
         get() {
             valueChanged = true
             return field

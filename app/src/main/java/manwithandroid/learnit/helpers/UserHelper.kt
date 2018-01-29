@@ -36,8 +36,8 @@ object UserHelper {
 
     fun getUserExtra(onFinish: (eventResults: EventResults<UserExtra>) -> Unit) {
         FirebaseFirestore.getInstance().collection(USERS_EXTRA_REFERENCE_NAME).document(getConnectedUserUid(true)!!).get().addOnCompleteListener({
-            if (!it.isSuccessful) {
-                onFinish(EventResults(it.exception?.localizedMessage!!))
+            if (!it.isSuccessful || !it.result.exists()) {
+                onFinish(EventResults(it.exception?.message))
             } else {
                 val userExtra = it.result.toObject(UserExtra::class.java)
 
@@ -136,14 +136,14 @@ object UserHelper {
         if (connectedUser == null) throw IllegalStateException("The connected user object is null")
 
         if (connectedUser?.classes == null) connectedUser?.classes = mutableListOf()
-        if (connectedUser?.lessonsProfiles == null) connectedUser?.lessonsProfiles = mutableMapOf()
+        if (connectedUser?.classesProfiles == null) connectedUser?.classesProfiles = mutableMapOf()
 
         connectedUser?.classes!!.add(classObject)
-        connectedUser?.lessonsProfiles!![classObject.key] = classProfile
+        connectedUser?.classesProfiles!![classObject.key] = classProfile
 
         // Build first program
         updateProgramOf(classObject.key,
-                ProgramBuilderHelper.buildFirstProgram(classProfile),
+                ProgramBuilderHelper.buildFirstProgram(classObject.key, classProfile),
                 false)
 
         updateUser({
@@ -152,7 +152,7 @@ object UserHelper {
 
             } else {
                 connectedUser?.classes!!.remove(classObject)
-                connectedUser?.lessonsProfiles!!.remove(classObject.key)
+                connectedUser?.classesProfiles!!.remove(classObject.key)
 
                 addToClassListener(EventResults(it.message))
             }

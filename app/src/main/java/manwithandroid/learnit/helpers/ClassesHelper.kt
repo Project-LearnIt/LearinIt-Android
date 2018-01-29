@@ -8,7 +8,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import manwithandroid.learnit.app.LiApplication
 import manwithandroid.learnit.helpers.models.EventResults
 import manwithandroid.learnit.models.Class
-import manwithandroid.learnit.models.LessonProfile
+import manwithandroid.learnit.models.ClassProfile
 import manwithandroid.learnit.models.Material
 import manwithandroid.learnit.models.Subject
 import manwithandroid.learnit.models.adapters.UserMaterials
@@ -39,7 +39,7 @@ object ClassesHelper {
         UserHelper.setUsedSubjects(classKey, indexsList)
     }
 
-    fun registerClass(classObject: Class, lessonProfile: LessonProfile, classUid: String) {
+    fun registerClass(classObject: Class, classProfile: ClassProfile, classUid: String) {
         val userId = UserHelper.getConnectedUserUid(true)!!
 
         // Add the user to the class students list
@@ -54,7 +54,7 @@ object ClassesHelper {
                 }
 
         // Add the class to the user userProfile
-        UserHelper.addClassToConnectedUser(classObject, lessonProfile, {
+        UserHelper.addClassToConnectedUser(classObject, classProfile, {
             if (!it.isSuccessful) unregisterClass(classUid)
         })
 

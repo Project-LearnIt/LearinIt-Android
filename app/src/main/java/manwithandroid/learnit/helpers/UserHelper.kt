@@ -5,7 +5,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import manwithandroid.learnit.app.LiApplication
 import manwithandroid.learnit.helpers.models.EventResults
 import manwithandroid.learnit.models.Class
-import manwithandroid.learnit.models.LessonProfile
+import manwithandroid.learnit.models.ClassProfile
 import manwithandroid.learnit.models.Program
 import manwithandroid.learnit.models.User
 import manwithandroid.learnit.utilities.TimeUtilities
@@ -108,18 +108,18 @@ object UserHelper {
         return false
     }
 
-    fun addClassToConnectedUser(classObject: Class, lessonProfile: LessonProfile, addToClassListener: (eventResults: EventResults<Any>) -> Unit) {
+    fun addClassToConnectedUser(classObject: Class, classProfile: ClassProfile, addToClassListener: (eventResults: EventResults<Any>) -> Unit) {
         if (connectedUser == null) throw IllegalStateException("The connected user object is null")
 
         if (connectedUser?.classes == null) connectedUser?.classes = mutableListOf()
         if (connectedUser?.lessonsProfiles == null) connectedUser?.lessonsProfiles = mutableMapOf()
 
         connectedUser?.classes!!.add(classObject)
-        connectedUser?.lessonsProfiles!![classObject.key] = lessonProfile
+        connectedUser?.lessonsProfiles!![classObject.key] = classProfile
 
         // Build first program
         updateProgramOf(classObject.key,
-                ProgramBuilderHelper.buildFirstProgram(lessonProfile),
+                ProgramBuilderHelper.buildFirstProgram(classProfile),
                 false)
 
         updateUser({

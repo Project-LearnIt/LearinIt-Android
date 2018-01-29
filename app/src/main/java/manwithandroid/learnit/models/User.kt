@@ -27,7 +27,7 @@ class User {
     var completedSubjects: MutableMap<String, MutableList<Int>>? = null
 
     // Lessons profiles map by class key and lesson profile
-    var lessonsProfiles: MutableMap<String, LessonProfile>? = null
+    var lessonsProfiles: MutableMap<String, ClassProfile>? = null
 
     constructor() {
         //do nothing

@@ -4,9 +4,10 @@ package manwithandroid.learnit.models
  * Created by Roi Amiel on 20/01/2018.
  */
 
-class LessonProfile {
+class ClassProfile {
 
     companion object {
+
         const val LOVE_RATE_VERY_LOVE = 0
         const val LOVE_RATE_LOVE = 1
         const val LOVE_RATE_FIFTY_FIFTY = 2
@@ -24,6 +25,7 @@ class LessonProfile {
         const val GOOD_RATE_FIFTY_FIFTY = 2
         const val GOOD_RATE_DONT_GOOD = 3
         const val GOOD_RATE_TERRIBLE = 4
+
     }
 
     var loveRate: Int = LOVE_RATE_VERY_LOVE

@@ -12,4 +12,24 @@
         <key>lesson_profile_max_percent</key>
         <value>90</value>
     </entry>
+    <entry>
+        <key>lessonDurationVeryLong</key>
+        <value>8</value>
+    </entry>
+    <entry>
+        <key>lessonDurationLong</key>
+        <value>6</value>
+    </entry>
+    <entry>
+        <key>lessonDurationMedium</key>
+        <value>5</value>
+    </entry>
+    <entry>
+        <key>lessonDurationShort</key>
+        <value>3</value>
+    </entry>
+    <entry>
+        <key>lessonDurationVeryShort</key>
+        <value>2</value>
+    </entry>
 </defaultsMap>

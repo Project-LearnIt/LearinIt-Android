@@ -5,16 +5,23 @@ import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import manwithandroid.learnit.app.LiApplication
 import manwithandroid.learnit.models.Class
 import manwithandroid.learnit.models.Lesson
-import manwithandroid.learnit.models.Program
 import manwithandroid.learnit.utilities.TimeUtilities
 
 /**
  * Created by Roi Amiel on 18/01/2018.
  */
 object LessonsBuilderHelper {
+
+    /* Database params */
+    val lessonDurationVeryLong = FirebaseRemoteConfig.getInstance().getLong("lessonDurationVeryLong")
+    val lessonDurationLong = FirebaseRemoteConfig.getInstance().getLong("lessonDurationLong")
+    val lessonDurationMedium = FirebaseRemoteConfig.getInstance().getLong("lessonDurationMedium")
+    val lessonDurationShort = FirebaseRemoteConfig.getInstance().getLong("lessonDurationShort")
+    val lessonDurationVeryShort = FirebaseRemoteConfig.getInstance().getLong("lessonDurationVeryShort")
 
     /* Finals */
     private const val ALREADY_SET_ALARM_TAG = "AlreadySetBuildTaskAlarm"

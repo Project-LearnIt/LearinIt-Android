@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import kotlinx.android.synthetic.main.activity_create_lesson_profile.*
 import manwithandroid.learnit.R
-import manwithandroid.learnit.models.LessonProfile
+import manwithandroid.learnit.models.ClassProfile
 
 /**
  * Created by Roi Amiel on 20/01/2018.
@@ -43,7 +43,7 @@ class CreateLessonProfileActivity : AppCompatActivity() {
         }
     }
 
-    private fun createLessonProfile(): LessonProfile {
+    private fun createLessonProfile(): ClassProfile {
         val loveRate = loveRateSpinner.selectedItemPosition
         val lessonDuration = lessonDurationSpinner.selectedItemPosition
         val timesInWeek = timesInWeekSpinner.selectedItemPosition
@@ -52,7 +52,7 @@ class CreateLessonProfileActivity : AppCompatActivity() {
         val videosPercent = videosPercentSeekBar.progress
         val simulationPercent = simulationPercentSeekBar.progress
 
-        val lessonProfile = LessonProfile()
+        val lessonProfile = ClassProfile()
         lessonProfile.loveRate = loveRate
         lessonProfile.lessonDuration = lessonDuration
         lessonProfile.timesInWeek = timesInWeek
@@ -73,9 +73,9 @@ class CreateLessonProfileActivity : AppCompatActivity() {
     }
 
     companion object {
-        private lateinit var createLessonProfileListener: (lessonProfile: LessonProfile?) -> Unit
+        private lateinit var createLessonProfileListener: (classProfile: ClassProfile?) -> Unit
 
-        fun createIntent(context: Context, onCreateProfileListener: (lessonProfile: LessonProfile?) -> Unit): Intent {
+        fun createIntent(context: Context, onCreateProfileListener: (classProfile: ClassProfile?) -> Unit): Intent {
             createLessonProfileListener = onCreateProfileListener
 
             return Intent(context, CreateLessonProfileActivity::class.java)

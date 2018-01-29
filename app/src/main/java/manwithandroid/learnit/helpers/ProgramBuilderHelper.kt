@@ -1,6 +1,6 @@
 package manwithandroid.learnit.helpers
 
-import manwithandroid.learnit.models.LessonProfile
+import manwithandroid.learnit.models.ClassProfile
 import manwithandroid.learnit.models.Program
 
 /**
@@ -8,7 +8,7 @@ import manwithandroid.learnit.models.Program
  */
 object ProgramBuilderHelper {
 
-    fun buildFirstProgram(lessonProfile: LessonProfile): Program {
+    fun buildFirstProgram(classProfile: ClassProfile): Program {
 
         //todo add content
 

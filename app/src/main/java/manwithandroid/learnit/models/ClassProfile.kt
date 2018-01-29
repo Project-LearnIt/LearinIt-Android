@@ -31,6 +31,10 @@ class ClassProfile {
     var loveRate: Int = LOVE_RATE_VERY_LOVE
     var lessonDuration: Int = LESSON_DURATION_VERY_LONG
     var timesInWeek: Int = 1
+
+    // todo add this prop
+    var mediaLevel = Media.LEVEL_EASY
+
     var goodRate: Int = GOOD_RATE_VERY_GOOD
     var textsPercent: Int = 10
     var videosPercent: Int = 10

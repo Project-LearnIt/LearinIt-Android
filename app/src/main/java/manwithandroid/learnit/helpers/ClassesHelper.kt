@@ -36,6 +36,7 @@ object ClassesHelper {
     }
 
     fun setUsedSubjects(classKey: String, indexsList: List<Int>) {
+        //todo fix indexs list when it sub list
         UserHelper.setUsedSubjects(classKey, indexsList)
     }
 

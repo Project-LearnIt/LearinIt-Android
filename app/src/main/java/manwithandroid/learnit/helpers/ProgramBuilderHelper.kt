@@ -1,6 +1,9 @@
 package manwithandroid.learnit.helpers
 
-import manwithandroid.learnit.models.*
+import manwithandroid.learnit.models.ClassProfile
+import manwithandroid.learnit.models.LessonResult
+import manwithandroid.learnit.models.Program
+import manwithandroid.learnit.models.Subject
 
 /**
  * Created by Roi Amiel on 27/01/2018.
@@ -45,6 +48,8 @@ object ProgramBuilderHelper {
             currentProgram: Program,
             weeksLeft: Int,
             subjectsLeft: List<Subject> = ClassesHelper.getSubjectsLeftFor(classKey)): Program {
+
+        // !!! do small changes to the program !!!
 
         //todo add content
 

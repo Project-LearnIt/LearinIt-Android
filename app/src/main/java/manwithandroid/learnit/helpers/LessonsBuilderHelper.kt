@@ -111,21 +111,20 @@ object LessonsBuilderHelper {
         }
     }
 
-    private fun buildLessons(classObject: Class, firstBuild: Boolean): List<Lesson> {
+    private fun buildLessons(classKey: String, firstBuild: Boolean): List<Lesson> {
 
-        val program = UserHelper.getProgramOf(classObject.key)
+        val program = UserHelper.getProgramOf(classKey)
 
-        UserHelper.updateProgramOf(classObject.key, program)
+        // Returns the list of all the subjects that left for this class
+        ClassesHelper.getSubjectsLeftFor(classKey)
 
-        ClassesHelper.getSubjectsLeftFor(classObject.key)
-
-        ClassesHelper.setUsedSubjects(classObject.key, listOf(1, 2, 3))
+        ClassesHelper.setUsedSubjects(classKey, listOf(1, 2, 3))
 
         //todo add content
 
         // placeholder code:::
         val lesson = Lesson()
-        lesson.classId = classObject.key
+        lesson.classId = classKey
         lesson.name = "test lesson"
         lesson.description = "this is a test class"
         lesson.toWeekOfYear = 3

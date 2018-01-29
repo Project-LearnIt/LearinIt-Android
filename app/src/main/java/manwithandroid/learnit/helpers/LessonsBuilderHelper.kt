@@ -87,7 +87,7 @@ object LessonsBuilderHelper {
 
             // Build lessons for each class
             for (classObject in classes) {
-                user.weekLessons?.addAll(buildLessons(classObject, firstBuild))
+                user.weekLessons?.addAll(buildLessons(classObject.key, firstBuild))
             }
 
             if (!firstBuild) {

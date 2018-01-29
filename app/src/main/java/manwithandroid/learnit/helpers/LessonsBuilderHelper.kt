@@ -123,7 +123,7 @@ object LessonsBuilderHelper {
 
         //todo add content
 
-        // placeholder code:::
+        // placeholder code
         val lesson = Lesson()
         lesson.classKey = classKey
         lesson.name = "test lesson"

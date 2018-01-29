@@ -16,7 +16,7 @@ class Lesson {
 
     var state: Int = STATE_NEUTRAL
 
-    var classId: String = ""
+    var classKey: String = ""
 
     var subjects: MutableList<Subject>? = null
 

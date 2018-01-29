@@ -9,6 +9,7 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import manwithandroid.learnit.app.LiApplication
 import manwithandroid.learnit.models.Class
 import manwithandroid.learnit.models.Lesson
+import manwithandroid.learnit.models.Subject
 import manwithandroid.learnit.utilities.TimeUtilities
 
 /**
@@ -116,15 +117,15 @@ object LessonsBuilderHelper {
         val program = UserHelper.getProgramOf(classKey)
 
         // Returns the list of all the subjects that left for this class
-        ClassesHelper.getSubjectsLeftFor(classKey)
+        val subjectsLeft: List<Subject> = ClassesHelper.getSubjectsLeftFor(classKey)
 
-        ClassesHelper.setUsedSubjects(classKey, listOf(1, 2, 3))
+        ClassesHelper.setUsedSubjects(classKey, listOf(0, 1, 2))
 
         //todo add content
 
         // placeholder code:::
         val lesson = Lesson()
-        lesson.classId = classKey
+        lesson.classKey = classKey
         lesson.name = "test lesson"
         lesson.description = "this is a test class"
         lesson.toWeekOfYear = 3

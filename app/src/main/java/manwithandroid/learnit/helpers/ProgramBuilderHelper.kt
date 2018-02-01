@@ -1,5 +1,6 @@
 package manwithandroid.learnit.helpers
 
+import manwithandroid.learnit.helpers.LinearAnalysisHelper.linearDifAnalysis
 import manwithandroid.learnit.models.ClassProfile
 import manwithandroid.learnit.models.LessonResult
 import manwithandroid.learnit.models.Program
@@ -38,9 +39,23 @@ object ProgramBuilderHelper {
 
     fun buildProgram(classKey: String, lessonResult: LessonResult): Program {
 
-        //todo add content
+        // todo Get params
+        val currentProgram = UserHelper.getProgramOf(classKey)
 
-        return UserHelper.getProgramOf(classKey)
+        var programsHistory = UserHelper.getConnectedUser(true)?.userExtra?.oldLessonsPrograms!![classKey]!!
+        programsHistory = MutableList(programsHistory.size, { programsHistory[it] })
+
+        programsHistory.add(currentProgram)
+
+        // todo analys data
+        //linearDifAnalysis()
+
+
+        // todo build program
+
+        // todo log
+
+        return currentProgram
     }
 
     fun fitProgram(
